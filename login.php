@@ -31,7 +31,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $password = trim($_POST["password"]);
     }
-    
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
@@ -43,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_email = $email;
-            
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Store result
@@ -75,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $login_err = "Invalid email or password.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "QUERY:::::::Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
@@ -112,8 +110,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label>email</label>
-                <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
                 <span class="invalid-feedback"><?php echo $email_err; ?></span>
             </div>    
             <div class="form-group">
