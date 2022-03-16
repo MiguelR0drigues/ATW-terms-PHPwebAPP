@@ -24,7 +24,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $email = trim($_POST["email"]);
     }
-    
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter your password.";
@@ -33,15 +32,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
+
         // Prepare a select statement
         $sql = "SELECT id, email, password FROM users WHERE email = ?";
-        
         if($stmt = mysqli_prepare($link, $sql)){
+            
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_email);
-            
             // Set parameters
             $param_email = $email;
+            
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Store result
@@ -78,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Close statement
             mysqli_stmt_close($stmt);
-        }
+        }echo "PREPARE STATEMENT::::::::::Oops! Something went wrong. Please try again later.";
     }
     
     // Close connection
