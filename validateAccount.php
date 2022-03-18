@@ -31,8 +31,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Store result
                 mysqli_stmt_store_result($stmt);
 
-                //session_destroy();//destroy session with just the email from registo.php
-
                 // Check if email exists, if yes then verify token
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
