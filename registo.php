@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_name= $Uname;
-            $param_estado=1;
+            $param_estado=0;
             $param_tipo=1;
             $param_validado=0;
             
