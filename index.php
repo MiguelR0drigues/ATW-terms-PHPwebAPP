@@ -1,10 +1,12 @@
 <?php
 // Initialize the session
 session_start();
- 
-require 'logincheck.php';
+
+require 'functions.php';
+isAccountReady();
+
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
