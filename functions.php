@@ -46,16 +46,41 @@ function isAccountReady()
     if (isLoggedin()) {
         if (isAccountValid()) {
             if (isAccountActive()) {
-                return true;
+                //Account is logged in , correctly validated and also active!
             } else {
                 phpAlert("Your account is inactive at the moment.");
                 //header("location: registo.php");
             }
         } else {
-            header("location: validateAccount?val_err=1"); // erro de validação 1 = conta não é válida
+            header("location: validateAccount.php?val_err=1"); // erro de validação 1 = conta não é válida
         }
     } else {
         header("location: login.php");
         exit;
     }
+}
+
+function generateRandomString($length = 25)
+{ // function to generate random string
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+function sendEmail($token, $email)
+{ // function to send email
+    //email function
+    ini_set("SMTP", "smtp.server.com"); //confirm smtp
+    $to = $email;
+    $subject = "Validation Token";
+    $message = "" . $token;
+    $from = "miguel.telmo.atw@gmail.com"; //sender
+    $headers = "From: $from";
+    mail($to, $subject, $message, $headers);
+
+    echo "Mail sent!";
 }

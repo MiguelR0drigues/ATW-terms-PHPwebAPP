@@ -46,6 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;
                             $_SESSION["user_name"] = $nome;
+                            $_SESSION["status"] = 1;
+                            $_SESSION["validated"] = 1;
+                            $_SESSION["type"] = 1;
 
                             $updateQuery = "UPDATE users SET validado=1 WHERE id=?";
                             if ($stm = mysqli_prepare($link, $updateQuery)) {
