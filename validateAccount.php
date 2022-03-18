@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["validated"] = 1;
                             $_SESSION["type"] = 1;
 
-                            $updateQuery = "UPDATE users SET validado=1 WHERE id=?";
+                            $updateQuery = "UPDATE users SET estado=1,validado=1 WHERE id=?";
                             if ($stm = mysqli_prepare($link, $updateQuery)) {
                                 // Bind variables to the prepared statement as parameters
                                 mysqli_stmt_bind_param($stm, "i", $id);
