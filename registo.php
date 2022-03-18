@@ -8,30 +8,8 @@ $email = $password = $confirm_password = $Uname = "";
 $email_err = $password_err = $confirm_password_err = $Uname_err = "";
 
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    function generateRandomString($length = 25) { // function to generate random string
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    function sendEmail($token,$email){ // function to send email
-        //email function 
-        ini_set("SMTP", "smtp.server.com");//confirm smtp
-        $to = $email;
-        $subject = "Validation Token";
-        $message = "" . $token;
-        $from = "miguel.telmo.atw@gmail.com"; //sender
-        $headers = "From: $from";
-        mail($to,$subject,$message,$headers);
-    
-        echo "Mail sent!";
-    }
     // Validate email
     if (empty(trim($_POST["email"]))) {
         $email_err = "Please enter a email.";
@@ -98,30 +76,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Prepare an insert statement
         $sql = "INSERT INTO users (nome, email, palavrapasse,tipo,estado,validado,token) VALUES (?,?,?,?,?,?,?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, 'sssiiis', $param_name, $param_email, $param_password,$param_tipo,$param_estado,$param_validado,$param_token);
-            
+            mysqli_stmt_bind_param($stmt, 'sssiiis', $param_name, $param_email, $param_password, $param_tipo, $param_estado, $param_validado, $param_token);
+
             // Set parameters
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_name= $Uname;
-            $param_estado=0;
-            $param_tipo=1;
-            $param_validado=0;
-            $param_token=generateRandomString(6);
-            
+            $param_name = $Uname;
+            $param_estado = 0;
+            $param_tipo = 1;
+            $param_validado = 0;
+            $param_token = generateRandomString(6);
+
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                
-                sendEmail($param_token,$param_email);
+            if (mysqli_stmt_execute($stmt)) {
+
+                sendEmail($param_token, $param_email);
 
                 session_start(); // starting session to send email to validateAccount.php
-                $_SESSION["email"]=$email;
+                $_SESSION["email"] = $email;
                 // Redirect to validation page
                 header("location: validateAccount.php");
-            } else{
+            } else {
                 echo "QUERY:::::Oops! Something went wrong. Please try again later.";
             }
 
