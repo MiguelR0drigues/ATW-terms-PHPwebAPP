@@ -3,7 +3,7 @@
 session_start();
 
 require 'functions.php';
-isLoggedin();
+isLoggedin("index.php");
 isAccountReady();
 
 ?>
