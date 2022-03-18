@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-
+                session_destroy();
                 // Store result
                 mysqli_stmt_store_result($stmt);
 
@@ -45,9 +45,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;  
                             $_SESSION["user_name"]= $nome;                          
-                            
-                            // Redirect user to welcome page
-                            header("location: index.php");
+
+                            $updateQuery = "UPDATE users SET estado=1, validado=1 WHERE id=?";
+                            if($stm = mysqli_prepare($link, $updateQuery)){
+                                // Bind variables to the prepared statement as parameters
+                                mysqli_stmt_bind_param($stm, "i", $id);
+                                if(mysqli_stmt_execute($stm)){
+                                    // Redirect user to welcome page
+                                    header("location: index.php");
+                                }else{
+                                    echo "QUERY:::::::Oops! Something went wrong. Please try again later.";
+                                }
+                            }else{
+                                echo mysqli_error ($link);
+                            }
                         } else{
                             // Token is not valid, display a generic error message
                             $token_err = "Invalid token.";
@@ -58,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $login_err = "Invalid email (already exists).";
                 }
             } else{
-                echo "QUERY:::::::Oops! Something went wrong. Please try again later.";
+                echo "QUERY(SELECT):::::::Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
