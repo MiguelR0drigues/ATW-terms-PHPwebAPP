@@ -1,4 +1,6 @@
 <?php
+require "db.connection.php";
+
 function isLoggedin()
 {
     // Check if the user is logged in, if not then redirect him to login page
@@ -80,7 +82,31 @@ function sendEmail($token, $email)
     $message = "" . $token;
     $from = "miguel.telmo.atw@gmail.com"; //sender
     $headers = "From: $from";
-    mail($to, $subject, $message, $headers);
+    if (mail($to, $subject, $message, $headers)) {
+        return true;
+    } else {
+        return false;
+    }
 
-    echo "Mail sent!";
+}
+
+function resendEmail($email)
+{
+    $token = generateRandomString(6);
+    $updateQuery = "UPDATE users SET token=? WHERE id=?";
+    if ($stm = mysqli_prepare($link, $updateQuery)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stm, "si", $token, $id);
+        if (mysqli_stmt_execute($stm)) {
+            if (sendEmail($token, $email)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            echo "QUERY(UPDATE):::::::Oops! Something went wrong. Please try again later.";
+        }
+    } else {
+        echo mysqli_error("$link");
+    }
 }
