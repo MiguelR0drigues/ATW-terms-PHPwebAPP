@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate name
     if (empty(trim($_POST["Uname"]))) {
         $name_err = "Please insert a name.";
-    } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["Uname"]))) {
+    } elseif (!preg_match('/\w+( +\w+)*$/', trim($_POST["Uname"]))) {
         $name_err = "Name invalid.";
     } else {
         $Uname = trim($_POST["Uname"]);

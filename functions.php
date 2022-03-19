@@ -1,5 +1,4 @@
 <?php
-require "db.connection.php";
 
 function isLoggedin()
 {
@@ -90,23 +89,23 @@ function sendEmail($token, $email)
 
 }
 
-function resendEmail($email)
+function resendEmail($email, $link)
 {
     $token = generateRandomString(6);
-    $updateQuery = "UPDATE users SET token=? WHERE id=?";
-    if ($stm = mysqli_prepare($link, $updateQuery)) {
+    $updateQuery = "UPDATE users SET token=? WHERE email=?";
+    if ($stmt = mysqli_prepare($link, $updateQuery)) {
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stm, "si", $token, $id);
-        if (mysqli_stmt_execute($stm)) {
+        mysqli_stmt_bind_param($stmt, "ss", $token, $email);
+        if (mysqli_stmt_execute($stmt)) {
             if (sendEmail($token, $email)) {
                 return true;
             } else {
                 return false;
             }
         } else {
-            echo "QUERY(UPDATE):::::::Oops! Something went wrong. Please try again later.";
+            echo mysqli_error($link);
         }
     } else {
-        echo mysqli_error("$link");
+        echo mysqli_error($link);
     }
 }
