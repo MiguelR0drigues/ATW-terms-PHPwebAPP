@@ -92,18 +92,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Login Form</title>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css" type = "text/css" media = "all" />
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+    <!-- form section start -->
+    <section class="w3l-mockup-form">
+        <div class="container">
+            <!-- /form -->
+            <div class="workinghny-form-grid">
+                <div class="main-mockup">
+                    <div class="w3l_form align-self">
+                        <div class="left_grid_info">
+                            <img src="images/image.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="content-wthree">
+                        <h2>Login</h2>
+                            <p>Please fill in your credentials to login.</p>
 
         <?php
 if (!empty($login_err)) {
@@ -112,21 +122,19 @@ if (!empty($login_err)) {
 ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
-                <span class="invalid-feedback"><?php echo $email_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" placeholder="Enter your Email" required value="<?php echo $email; ?>">
+                <span class="invalid-feedback"><?php echo $email_err; ?></span>    
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder ="Enter your Password" style="margin-bottom: 2px"; required>
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="registo.php">Sign up now</a>.</p>
+                <button name="submit" name="submit" class="btn" type="submit">Login</button>
         </form>
+        <div class ="social-icons">
+            <p>Don't have an account? <a href ="registo.php">Sign up now</a>.</p>
     </div>
+    </div>
+                </div>
+            </div>
+            </div>
+    </section>
 </body>
 </html>

@@ -116,45 +116,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Sign Up Form</title>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css" type = "text/css" media = "all" />
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="wrapper">
+<section class="w3l-mockup-form">
+        <div class="container">
+            <!-- /form -->
+            <div class="workinghny-form-grid">
+                <div class="main-mockup">
+                    <div class="w3l_form align-self">
+                        <div class="left_grid_info">
+                            <img src="images/image2.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="content-wthree">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Nome</label>
-                <input type="text" name="Uname" class="form-control <?php echo (!empty($Uname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $Uname; ?>">
-                <span class="invalid-feedback"><?php echo $Uname_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                <input type="text" name="name" placeholder ="Enter your name" class="form-control <?php echo (!empty($Uname_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $Uname; ?>">
+                <span class="invalid-feedback"><?php echo $Uname_err; ?></span> 
+                <input type="email" name="email" placeholder ="Enter your email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $email; ?>">
                 <span class="invalid-feedback"><?php echo $email_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                <input type="password" name="password" placeholder="Enter your password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $password; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                <input type="password" name="confirm_password" placeholder="Please Confirm your Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-            </div>
+                <div style ="width:400px;">
+                    <div style ="float: left; width:180px">
+                <button name ="submit" class="btn" type="submit">Register</button>
+                    </div>
+                    <div style="float:right; width: 180px">
+                <button name="reset" class="btn" type="Reset">Reset</button>
+                    </div>
+                </div>
+                </form>
+        <div class="social-icons">
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
-        </form>
-    </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
 </body>
-</html>s
+</html>
