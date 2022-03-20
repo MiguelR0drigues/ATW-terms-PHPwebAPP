@@ -135,33 +135,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                     <div class="content-wthree">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <input type="text" name="name" placeholder ="Enter your name" class="form-control <?php echo (!empty($Uname_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $Uname; ?>">
-                <span class="invalid-feedback"><?php echo $Uname_err; ?></span> 
-                <input type="email" name="email" placeholder ="Enter your email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $email; ?>">
-                <span class="invalid-feedback"><?php echo $email_err; ?></span>
-                <input type="password" name="password" placeholder="Enter your password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $password; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                <input type="password" name="confirm_password" placeholder="Please Confirm your Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-                <div style ="width:400px;">
-                    <div style ="float: left; width:180px">
-                <button name ="submit" class="btn" type="submit">Register</button>
-                    </div>
-                    <div style="float:right; width: 180px">
-                <button name="reset" class="btn" type="Reset">Reset</button>
-                    </div>
-                </div>
-                </form>
-        <div class="social-icons">
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
-            </div>
+                        <h2>Sign Up</h2>
+                        <p>Please fill this form to create an account.</p>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <input type="text" name="Uname" placeholder ="Enter your name" class="form-control <?php echo (!empty($Uname_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $Uname; ?>">
+                            <span class="invalid-feedback"><?php echo $Uname_err; ?></span>
+                            <input type="email" name="email" placeholder ="Enter your email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $email; ?>">
+                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                            <input type="password" name="password" placeholder="Enter your password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" required value="<?php echo $password; ?>">
+                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                            <input type="password" name="confirm_password" placeholder="Please Confirm your Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                            <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                            <div style="float:left; width:100%">
+                                <button name ="submit" style="width:49%" class=" btn" type="submit">Register</button>
+                                <button name="reset" style="width:49%" class=" btn" type="Reset">Reset</button>
+                            </div>
+                        </form>
+                        <div class="social-icons">
+                            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>   
+    </section>
 </body>
 </html>
