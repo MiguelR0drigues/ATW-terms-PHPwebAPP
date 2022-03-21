@@ -123,10 +123,10 @@ if (!empty($login_err)) {
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" placeholder="Enter your Email" required value="<?php echo $email; ?>">
-                <span class="invalid-feedback"><?php echo $email_err; ?></span>    
+                <span class="invalid-feedback"><?php echo $email_err; ?></span>
                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder ="Enter your Password" style="margin-bottom: 2px"; required>
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                <button name="submit" name="submit" class="btn" type="submit">Login</button>
+                <button style="margin-top:2%" name="submit" name="submit" class="btn" type="submit">Login</button>
         </form>
         <div class ="social-icons">
             <p>Don't have an account? <a href ="registo.php">Sign up now</a>.</p>

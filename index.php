@@ -12,7 +12,7 @@ isAccountReady();
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="modal.scss">
     <style>
         body{ font: 14px sans-serif; text-align: center; }
     </style>
@@ -22,6 +22,23 @@ isAccountReady();
     <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
+        <button class="button open-button">open modal</button>
+        <dialog class="modal" id="modal">
+            <div class=modal-header>
+                <h1>Insert a term</h1>
+            </div>
+            <form class="form" method="dialog">
+                <label>Title</label>
+                <input type="text" id="title">
+                <label>Description</label>
+                <input type="text" id="description" placeholder="(Max 140 characters)">
+                <div class="btn2-group">
+                    <button class="button" id="submitForm" type="submit">submit form</button>
+                    <button class="close button"><b>Close</b></button>
+                </div>
+            </form>
+        </dialog>
     </p>
 </body>
+<script src="modal.js"></script>
 </html>
