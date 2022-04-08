@@ -32,6 +32,7 @@ isAccountReady();
                 <input type="text" id="title">
                 <label>Description</label>
                 <input type="text" id="description" placeholder="(Max 140 characters)">
+                <input type="hidden" id="user-id" name="userId" value="<?php echo $_SESSION["id"]?>">
                 <div class="btn2-group">
                     <button class="button" id="submitForm" type="submit">submit form</button>
                     <button class="close button"><b>Close</b></button>
