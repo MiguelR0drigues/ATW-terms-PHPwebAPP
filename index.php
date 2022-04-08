@@ -23,6 +23,7 @@ isAccountReady();
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
         <button class="button open-button">open modal</button>
+        <?php isAdmin();?>
         <dialog class="modal" id="modal">
             <div class=modal-header>
                 <h1>Insert a term</h1>
@@ -31,7 +32,7 @@ isAccountReady();
                 <label>Title</label>
                 <input type="text" id="title">
                 <label>Description</label>
-                <input type="text" id="description" placeholder="(Max 140 characters)">
+                <input type="text" id="description" placeholder="(Max 140 characters)" maxlength="140">
                 <input type="hidden" id="user-id" name="userId" value="<?php echo $_SESSION["id"]?>">
                 <div class="btn2-group">
                     <button class="button" id="submitForm" type="submit">submit form</button>

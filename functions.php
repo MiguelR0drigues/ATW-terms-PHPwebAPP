@@ -109,3 +109,9 @@ function resendEmail($email, $link)
         echo mysqli_error($link);
     }
 }
+
+function isAdmin(){
+    if($_SESSION["type"]==2){
+        echo '<a href="test.php" class="btn btn-primary ml-3">ADMIN</a>';
+    }
+}
