@@ -40,7 +40,7 @@ isAccountReady();
             </div>
             <form class="form" method="dialog">
                 <label>Title</label>
-                <input type="text" id="title">
+                <input type="text" id="title" maxlength="100">
                 <label>Description</label>
                 <input type="text" id="description" placeholder="(Max 140 characters)" maxlength="140">
                 <input type="hidden" id="user-id" name="userId" value="<?php echo $_SESSION["id"]?>">

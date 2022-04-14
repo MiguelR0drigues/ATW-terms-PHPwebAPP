@@ -5,8 +5,6 @@
     // Include config file
     require_once "db.connection.php";
     require "functions.php";
-    
-    isLoggedin("index.php");
 
     $id = intval($_GET['id']);
     $title= ($_GET["title"]);
@@ -25,7 +23,7 @@
 
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
-
+            //Redirect
             header("location: index.php");
         } else {
             echo "QUERY:::::Oops! Something went wrong. Please try again later.";
