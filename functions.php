@@ -1,5 +1,6 @@
 <?php
 
+
 function isLoggedin()
 {
     // Check if the user is logged in, if not then redirect him to login page
@@ -110,8 +111,25 @@ function resendEmail($email, $link)
     }
 }
 
-function isAdmin(){
-    if($_SESSION["type"]==2){
-        echo '<a href="test.php" class="btn btn-primary ml-3">ADMIN</a>';
+function isAdmin($type){
+    if($type==2){
+        return true;
+    }
+}
+
+function ownerNameByID($id,$link){
+    $selectQuery = "SELECT nome FROM users WHERE id=?";
+    if ($stmt = mysqli_prepare($link, $selectQuery)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $nome);
+            if (mysqli_stmt_fetch($stmt))
+                return $nome;
+        } else {
+            echo mysqli_error($link);
+        }
+    } else {
+        echo mysqli_error($link);
     }
 }

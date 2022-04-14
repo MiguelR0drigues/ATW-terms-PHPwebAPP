@@ -23,7 +23,17 @@ isAccountReady();
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
         <button class="button open-button">open modal</button>
-        <?php isAdmin();?>
+        <?php if(isAdmin($_SESSION["type"])){
+            echo '<a href="test.php" class="btn btn-primary ml-3">ADMIN</a>';
+        }
+        ?>
+
+        <div>
+            <?php
+
+            ?>
+        </div>
+
         <dialog class="modal" id="modal">
             <div class=modal-header>
                 <h1>Insert a term</h1>
