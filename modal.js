@@ -1,4 +1,4 @@
-const modal = document.querySelector("#modal");
+const modal = document.querySelector("#Termsmodal");
 const openModal = document.querySelector(".open-button");
 const closeModal = document.querySelector(".close");
 const submitForm = document.querySelector("#submitForm");

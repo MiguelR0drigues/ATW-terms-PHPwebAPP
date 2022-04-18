@@ -133,3 +133,30 @@ function ownerNameByID($id,$link){
         echo mysqli_error($link);
     }
 }
+
+function isOwner($ownerID , $termID,$link){
+    // Prepare a select statement
+    $sql = "SELECT * FROM termos WHERE `owner` = ? AND `id`=?";
+
+    if ($stmt = mysqli_prepare($link, $sql)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "ii", $param_owner, $param_id);
+
+        // Set parameters
+        $param_id=$termID;
+        $param_owner=$ownerID;
+
+        // Attempt to execute the prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+            /* store result */
+            mysqli_stmt_store_result($stmt);
+
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                return true;
+            }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+        }
+    }
+}
