@@ -138,29 +138,6 @@ function  ownerNameByID($id,$link){
     mysqli_stmt_close($stmt);
 }
 
-function jajaja($link,$termID){
-    $selectQuery = "SELECT title,`description`,`owner`,pubDate,revDate,altDate FROM termos WHERE id=?";
-    if ($stmt = mysqli_prepare($link, $selectQuery)) {
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "i", $termID);
-        if (mysqli_stmt_execute($stmt)) {
-            mysqli_stmt_bind_result($stmt, $title,$description,$owner,$pubDate,$revDate,$altDate);
-            if (mysqli_stmt_fetch($stmt))
-                $result['title']=$title;
-                $result['description']=$description;
-                $result['owner']=$owner;
-                $result['pubDate']=$pubDate;
-                $result['revDate']=$revDate;
-                $result['altDate']=$altDate;
-                return $result;
-        } else {
-            echo mysqli_error($link);
-        }
-    } else {
-        echo mysqli_error($link);
-    }// Close statement
-    mysqli_stmt_close($stmt);
-}
 
 function isOwner($ownerID , $termID,$link){
     // Prepare a select statement
