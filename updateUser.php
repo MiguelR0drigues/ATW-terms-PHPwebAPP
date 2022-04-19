@@ -123,7 +123,7 @@ $_SESSION['msg']="Profile Updated successfully";
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">validado</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="validado" value="<?php echo $row['validado'];?>" readonly >
+                                  <input type="text" class="form-control" name="validado" value="<?php echo $row['validado'];?>" >
                               </div>
                           </div>
                           <div style="margin-left:100px;">

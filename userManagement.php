@@ -54,9 +54,7 @@ echo "<script>alert('Data deleted');</script>";
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><?php echo $_SESSION['loggedin'];?></h5>
+              	  <h5 class="centered"> Admin </h5>
               	  	
                   <li class="mt">
                       <a href="reset-password.php">
@@ -112,7 +110,7 @@ echo "<script>alert('Data deleted');</script>";
                                   <td><?php echo $row['estado'];?></td>
                                   <td><?php echo $row['validado'];?></td> 
                                   <td>        
-                                     <a href="updateUser.php?uid=<?php echo $row['id'];?>"> 
+                                     <a href="updateUser.php?id=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                      <a href="userManagement.php?id=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
