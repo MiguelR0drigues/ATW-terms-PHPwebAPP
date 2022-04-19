@@ -9,6 +9,8 @@ if(isAccountReady()){
         header('location: index.php');
     }
 }
+
+
 $termID = $_GET["id"];
 $selectQuery = "SELECT title,`description`,`owner`,pubDate,revDate,altDate FROM termos WHERE id=?";
 if ($stmt = mysqli_prepare($link, $selectQuery)) {
@@ -23,6 +25,7 @@ if ($stmt = mysqli_prepare($link, $selectQuery)) {
             $result['pubDate']=$pubDate;
             $result['revDate']=$revDate;
             $result['altDate']=$altDate;
+            
     } else {
         echo mysqli_error($link);
     }
@@ -30,6 +33,11 @@ if ($stmt = mysqli_prepare($link, $selectQuery)) {
     echo mysqli_error($link);
 }// Close statement
 mysqli_stmt_close($stmt);
+if(!isset($result["title"])){
+    echo '<h1> This term does not exist!!</h1>';
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +55,7 @@ mysqli_stmt_close($stmt);
         <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
     <div class="mb-3">
         <label class="form-label">Email address</label>
-        <input type="text" class="form-control" value="<?php echo $result['title']?>" disabled>
+        <input type="text" class="form-control" value="<?php echo $result['title']?? "Doesn't Exist"?>" disabled>
     </div>
     <div class="mb-3">
         <label class="form-label">Description</label>

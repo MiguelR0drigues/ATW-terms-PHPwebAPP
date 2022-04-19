@@ -41,7 +41,7 @@
                     // Attempt to execute the prepared statement
                     if (mysqli_stmt_execute($stmt)) {
                         //Redirect
-                        header("location: index.php");
+                        header("location: terms.php");
                     } else {
                         echo "QUERY:::::Oops! Something went wrong. Please try again later.";
                     }

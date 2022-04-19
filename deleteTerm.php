@@ -17,7 +17,7 @@ if(isset($_GET["id"])){
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
             /* store result */
-            header("location: index.php");
+            header("location: terms.php");
         // Close statement
         mysqli_stmt_close($stmt);
         }
