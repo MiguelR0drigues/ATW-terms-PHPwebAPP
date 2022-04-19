@@ -21,11 +21,11 @@ session_start();
     ?>
     <div class="card" style="width: 30rem;">
         <div class="card-header"  style="display: flex; justify-content: space-between;">
-            <p><?php #echo $data['title']??''; ?> LOREM IPSUM</p>
+            <p><?php echo $data['title']??''; ?> <!--LOREM IPSUM--></p>
             <p style="text-align: end;"><?php echo (ownerNameByID($data['owner'],$link))??'Unknown'; ?></p>
         </div> 
         <div class="card-body">
-            <p class="card-text"><?php #echo $data['description']??''; ?>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma</p>
+            <p class="card-text"><?php echo $data['description']??''; ?><!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma--></p>
         <div style="display: flex; justify-content: space-between; margin-top:3rem">
             <h6 class="" style="text-align: end; font-size:small;color:grey;"><?php echo $data['pubDate']??''; ?></h6>
             <?php
