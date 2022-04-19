@@ -114,18 +114,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="vToken">Validation token:</label><br>
             <input type="text" id="token" name="token" placeholder="XXXXXXX" <?php echo (!empty($token_err) && !empty($resend_feedback)) ? 'is-invalid' : ''; ?>><br>
             <?php
-if (!empty($token_err)) {
-    echo '<div class="alert alert-danger">' . $token_err . '</div>';
-}
-if (!empty($resend_feedback) && $resend_feedback = "success") {
-    echo '<div class="alert alert-success"> New email was sent! </div>';
-} elseif (!empty($resend_feedback) && $resend_feedback = "failed") {
-    echo '<div class="alert alert-danger"> Failed to sent the new email! </div>';
-}
-?>
-<?php
-
-?>
+            if (!empty($token_err)) {
+                echo '<div class="alert alert-danger">' . $token_err . '</div>';
+            }
+            if (!empty($resend_feedback) && $resend_feedback = "success") {
+                echo '<div class="alert alert-success"> New email was sent! </div>';
+            } elseif (!empty($resend_feedback) && $resend_feedback = "failed") {
+                echo '<div class="alert alert-danger"> Failed to sent the new email! </div>';
+            }
+            ?>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Verify">
                 <input type="submit" class="btn btn-secondary ml-2" name="resend" value="Resend Email">

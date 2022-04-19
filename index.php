@@ -57,7 +57,7 @@ isAccountReady();
                     if(isAdmin($_SESSION["type"])|| isOwner($_SESSION["id"], $data["id"],$link)){
                         echo '<div>';
                         echo '<a href="#" class="card-link" style="font-size:small;">Edit</a>';
-                        echo '<a href="#" class="card-link" style="font-size:small;">Delete</a>';
+                        echo '<a href="deleteTerm.php?id=',$data["id"],'" class="card-link" style="font-size:small;">Delete</a>';
                         echo '</div>';   
                     }
                     ?>

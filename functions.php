@@ -1,6 +1,9 @@
 <?php
 
 
+
+
+
 function isLoggedin()
 {
     // Check if the user is logged in, if not then redirect him to login page
@@ -134,6 +137,29 @@ function ownerNameByID($id,$link){
     }
 }
 
+function jajaja($link,$termID){
+    $selectQuery = "SELECT title,`description`,`owner`,pubDate,revDate,altDate FROM termos WHERE id=?";
+    if ($stmt = mysqli_prepare($link, $selectQuery)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "i", $termID);
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $title,$description,$owner,$pubDate,$revDate,$altDate);
+            if (mysqli_stmt_fetch($stmt))
+                $result['title']=$title;
+                $result['description']=$description;
+                $result['owner']=$owner;
+                $result['pubDate']=$pubDate;
+                $result['revDate']=$revDate;
+                $result['altDate']=$altDate;
+                return $result;
+        } else {
+            echo mysqli_error($link);
+        }
+    } else {
+        echo mysqli_error($link);
+    }
+}
+
 function isOwner($ownerID , $termID,$link){
     // Prepare a select statement
     $sql = "SELECT * FROM termos WHERE `owner` = ? AND `id`=?";
@@ -159,4 +185,30 @@ function isOwner($ownerID , $termID,$link){
         mysqli_stmt_close($stmt);
         }
     }
+}
+
+
+function fetch_data($db, $tableName, $columns){
+    if(empty($db)){
+        $msg= "Database connection error";
+    }elseif (empty($columns) || !is_array($columns)) {
+        $msg="columns Name must be defined in an indexed array";
+    }elseif(empty($tableName)){
+        $msg= "Table Name is empty";
+    }else{
+        $columnName = implode(", ", $columns);
+        $query = "SELECT ".$columnName." FROM $tableName"." ORDER BY id DESC";
+        $result = $db->query($query);
+        if($result== true){ 
+            if ($result->num_rows > 0) {
+                $row= mysqli_fetch_all($result, MYSQLI_ASSOC);
+                $msg= $row;
+            } else {
+                $msg= "No Data Found"; 
+            }
+        }else{
+            $msg= mysqli_error($db);
+        }
+    }
+    return $msg;
 }
