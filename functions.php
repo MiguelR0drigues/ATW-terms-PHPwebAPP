@@ -1,6 +1,9 @@
 <?php
 
 
+
+
+
 function isLoggedin()
 {
     // Check if the user is logged in, if not then redirect him to login page
@@ -117,7 +120,7 @@ function isAdmin($type){
     }
 }
 
-function ownerNameByID($id,$link){
+function  ownerNameByID($id,$link){
     $selectQuery = "SELECT nome FROM users WHERE id=?";
     if ($stmt = mysqli_prepare($link, $selectQuery)) {
         // Bind variables to the prepared statement as parameters
@@ -131,5 +134,34 @@ function ownerNameByID($id,$link){
         }
     } else {
         echo mysqli_error($link);
+    }// Close statement
+    mysqli_stmt_close($stmt);
+}
+
+
+function isOwner($ownerID , $termID,$link){
+    // Prepare a select statement
+    $sql = "SELECT * FROM termos WHERE `owner` = ? AND `id`=?";
+
+    if ($stmt = mysqli_prepare($link, $sql)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "ii", $param_owner, $param_id);
+
+        // Set parameters
+        $param_id=$termID;
+        $param_owner=$ownerID;
+
+        // Attempt to execute the prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+            /* store result */
+            mysqli_stmt_store_result($stmt);
+
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                return true;
+            }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+        }
     }
 }
