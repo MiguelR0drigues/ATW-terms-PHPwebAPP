@@ -31,7 +31,7 @@ isAccountReady();
     <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
-        <button class="termButton open-button">open modal</button>
+        <button class="open-button btn btn-dark">open modal</button>
         <?php if(isAdmin($_SESSION["type"])){
             echo '<a href="test.php" class="btn btn-primary ml-3">ADMIN</a>';
         }
@@ -46,7 +46,7 @@ isAccountReady();
             ?>
             <div class="card" style="width: 30rem;">
                 <div class="card-header"  style="display: flex; justify-content: space-between;">
-                    <p><?php echo $data['title']??''; ?></p>
+                    <p><a href="term.php?id=<?php echo $data['id']??''; ?>" > <?php echo $data['title']??''; ?></a></p>
                     <p style="text-align: end;"><?php echo (ownerNameByID($data['owner'],$link))??'Unknown'; ?></p>
                 </div> 
                 <div class="card-body">

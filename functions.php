@@ -120,7 +120,7 @@ function isAdmin($type){
     }
 }
 
-function ownerNameByID($id,$link){
+function  ownerNameByID($id,$link){
     $selectQuery = "SELECT nome FROM users WHERE id=?";
     if ($stmt = mysqli_prepare($link, $selectQuery)) {
         // Bind variables to the prepared statement as parameters
@@ -134,7 +134,8 @@ function ownerNameByID($id,$link){
         }
     } else {
         echo mysqli_error($link);
-    }
+    }// Close statement
+    mysqli_stmt_close($stmt);
 }
 
 function jajaja($link,$termID){
@@ -157,7 +158,8 @@ function jajaja($link,$termID){
         }
     } else {
         echo mysqli_error($link);
-    }
+    }// Close statement
+    mysqli_stmt_close($stmt);
 }
 
 function isOwner($ownerID , $termID,$link){
