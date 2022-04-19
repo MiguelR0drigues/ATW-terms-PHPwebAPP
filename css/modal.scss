@@ -1,4 +1,4 @@
-.modal {
+.Termsmodal {
   padding: 1em;
   max-width: 50ch;
   border: 0;
@@ -6,15 +6,15 @@
   border-radius: 5%;
   width: 100%;
   background-color: rgb(215, 255, 215);
-
-  & > * {
-    margin: 0 0 0.5rem 0;
+  &>* {
+      margin: 0 0 0.5rem 0;
   }
 }
 
-.modal::backdrop {
+.Termsmodal::backdrop {
   background: rgb(0 0 0 / 0.4);
 }
+
 
 /* extra styling */
 
@@ -35,20 +35,6 @@ h1 em {
   text-underline-offset: 0.25em;
 }
 
-.button {
-  border: 0;
-  cursor: pointer;
-  background: var(--gray-8);
-  color: var(--gray-2);
-  font-weight: 700;
-  padding: var(--size-2) var(--size-4);
-}
-
-.button:hover,
-.button:focus {
-  background: var(--cyan-9);
-}
-
 form {
   display: grid;
   gap: 1em;
@@ -59,22 +45,21 @@ form {
   text-align: left;
 }
 
-
-form>input[type=text]{  
-    border: 0;
-    text-decoration: none;
-    border-bottom: 3px;
-    background-color: rgb(255, 255, 255);
-    height: 3vh;
+form>input[type=text] {
+  border: 0;
+  text-decoration: none;
+  border-bottom: 3px;
+  background-color: rgb(255, 255, 255);
+  height: 3vh;
 }
 
-.btn2-group{
-    float: left;
-    width: 100%;
-    bottom:0px;
-    margin-top: 10%;
+.btn2-group {
+  float: left;
+  width: 100%;
+  bottom: 0px;
+  margin-top: 10%;
 }
 
-.btn2-group>button{
-    width: 49%;
+.btn2-group>button {
+  width: 49%;
 }
