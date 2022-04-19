@@ -49,7 +49,7 @@ isAccountReady();
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="#" class="navbar-brand">Blog Website</a>
+                    <a href="index.php" class="navbar-brand">Terms & co.</a>
                </div>
 
                <!-- MENU LINKS -->
@@ -59,13 +59,14 @@ isAccountReady();
                          <li><a href="terms.php">Termos</a></li>
                          <?php if(isAdmin($_SESSION["type"])){
                             echo '<li><a href="test.php">Admin</a></li>';
-                          }
+                            }
                           ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="logout.php">Sign Out of Your Account</a></li>
-                    <li><a href="reset-password.php">Reset Your Password</a></li>
+                        <li><a href="reset-password.php">Reset Password</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
+                </div>
           </div>
      </section>
      <main>
@@ -83,14 +84,12 @@ isAccountReady();
                </div>
           </section>
           <?php
-    if(isset($_GET["term_err"]) && $_GET["term_err"]==1){
-        echo '<div class="alert alert-warning" role="alert">';
-        echo 'This term already exists.';
-        echo '</div>';
-    }
-
-    ?>
-       
+            if(isset($_GET["term_err"]) && $_GET["term_err"]==1){
+                echo '<div class="alert alert-warning" role="alert">';
+                echo 'This term already exists.';
+                echo '</div>';
+            }
+            ?>
      </div>
      </main>
          <!-- SCRIPTS -->
