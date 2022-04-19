@@ -63,8 +63,8 @@ isAccountReady();
                           ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="reset-password.php">Reset Password</a></li>
-                        <li><a href="logout.php">Logout</a></li>
+                    <li><a href="reset-password.php">Reset Password</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
           </div>
