@@ -4,18 +4,7 @@ include'db.connection.php';
 // checking session is valid for not 
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
-  } else{
-
-// for deleting user
-if(isset($_GET['id']))
-{
-$adminid=$_GET['id'];
-$msg=mysqli_query($link,"delete from users where id='$adminid'");
-if($msg)
-{
-echo "<script>alert('Data deleted');</script>";
-}
-}
+  } 
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +15,7 @@ echo "<script>alert('Data deleted');</script>";
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <title>Admin | Manage Users</title>
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="fonts/font-awesome.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet">
   </head>
@@ -35,10 +24,8 @@ echo "<script>alert('Data deleted');</script>";
 
   <section id="container" >
       <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <a href="#" class="logo"><b>Admin Dashboard</b></a>
+        
+            <a href="userManagement.php" class="logo"><b>Admin Dashboard</b></a>
             <div class="nav notify-row" id="top_menu">
                
                          
@@ -63,14 +50,13 @@ echo "<script>alert('Data deleted');</script>";
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="updateUser.php" >
-                          <i class="fa fa-users"></i>
-                          <span>Manage Users</span>
-                      </a>
-                   
                   </li>
-              
+                  <li class="sub-menu">
+                      <a href="addUser.php" >
+                          <i class="fa fa-users"></i>
+                          <span>Adicionar</span>
+                      </a>
+                </li>
                  
               </ul>
           </div>
@@ -114,6 +100,7 @@ echo "<script>alert('Data deleted');</script>";
                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                      <a href="userManagement.php?id=<?php echo $row['id'];?>"> 
                                      <button class="btn btn-danger btn-xs" onClick="return confirm('Do you really want to delete');"><i class="fa fa-trash-o "></i></button></a>
+                                 
                               </td>
                               </tr>
                               <?php }?>
@@ -141,4 +128,4 @@ echo "<script>alert('Data deleted');</script>";
 
   </body>
 </html>
-<?php } ?>
+<?php  ?>

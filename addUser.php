@@ -5,18 +5,7 @@ require "functions.php";
 //Checking session is valid or not
 isAccountReady();
 
-// for updating user info    
-if(isset($_POST['Submit']))
-{
-	$nome=$_POST['nome'];
-	$email=$_POST['email'];
-	$tipo=$_POST['tipo'];
-    $estado=$_POST['estado'];
-    $validado=$_POST['validado'];
-  $id=intval($_GET['id']);
-$query=mysqli_query($link,"update users set nome='$nome' ,email='$email' , tipo='$tipo', estado='$estado', validado ='$validado' where id='$id'");
-$_SESSION['msg']="Profile Updated successfully";
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +46,6 @@ $_SESSION['msg']="Profile Updated successfully";
               <ul class="sidebar-menu" id="nav-accordion">
               
               <h5 class="centered"> Admin </h5>
-              	  	
                   <li class="mt">
                       <a href="reset-password.php">
                           <i class="fa fa-file"></i>
@@ -83,59 +71,60 @@ $_SESSION['msg']="Profile Updated successfully";
               </ul>
           </div>
       </aside>
-      <?php $ret=mysqli_query($link,"select * from users where id='".$_GET['id']."'");
-	  while($row=mysqli_fetch_array($ret))
-	  
-	  {?>
+
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> <?php echo $row['nome'];?>'s Information</h3>
 				<div class="row">
                   <div class="col-md-12">
                       <div class="content-panel">
                       <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']=""; ?></p>
-                           <form class="form-horizontal style-form" name="form1" method="post" action="" onSubmit="return valid();">
+                           <form class="form-horizontal style-form" name="form1" method="post" action="addUserBD.php">
                            <p style="color:#F00"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']="";?></p>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="nome" value="<?php echo $row['nome'];?>" >
+                                  <input type="text" class="form-control" name="nome"  >
                               </div>
                           </div>
                           
                               <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Email</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>" >
+                                  <input type="text" class="form-control" name="email"  >
                               </div>
                           </div>
-                          
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Palavra-Passe</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="palavrapasse"  >
+                              </div>
+                          </div>
                               <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Tipo </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="tipo" value="<?php echo $row['tipo'];?>" >
+                                  <input type="text" class="form-control" name="tipo" >
                               </div>
                           </div>
                                <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">estado</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="estado" value="<?php echo $row['estado'];?>" >
+                                  <input type="text" class="form-control" name="estado" >
                               </div>
                           </div>
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">validado</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="validado" value="<?php echo $row['validado'];?>" >
+                                  <input type="text" class="form-control" name="validado" >
                               </div>
                           </div>
                           <div style="margin-left:100px;">
-                          <input type="submit" name="Submit" value="Update" class="btn btn-theme"></div>
+                          <input type="submit" name="Submit" value="Submit" class="btn btn-theme"></div>
                           </form>
                       </div>
                   </div>
               </div>
 		</section>
-        <?php } ?>
+        <?php  ?>
       </section></section>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
