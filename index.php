@@ -58,7 +58,7 @@ isAccountReady();
                          <li class="active"><a href="index.php">Home</a></li>
                          <li><a href="terms.php">Termos</a></li>
                          <?php if(isAdmin($_SESSION["type"])){
-                            echo '<li><a href="test.php">Admin</a></li>';
+                            echo '<li><a href="userManagement.php">Admin</a></li>';
                             }
                           ?>
                     </ul>
