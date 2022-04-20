@@ -5,6 +5,14 @@ require "functions.php";
 //Checking session is valid or not
 isAccountReady();
 
+$nome=$_REQUEST['nome'];
+$email=$_REQUEST['email'];
+$tipo=$_REQUEST['tipo'];
+$palavrapasse=$_REQUEST['palavrapasse'];
+$estado=$_REQUEST['estado'];
+$validado=$_REQUEST['validado'];
+$query=mysqli_query($link,"INSERT INTO users Values('$nome' ,'$email' ,'$palavrapasse','$tipo','$estado', '$validado'");
+$_SESSION['msg']="Profile added successfully";
 
 ?>
 
@@ -77,8 +85,8 @@ isAccountReady();
 				<div class="row">
                   <div class="col-md-12">
                       <div class="content-panel">
-                      <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']=""; ?></p>
-                           <form class="form-horizontal style-form" name="form1" method="post" action="addUserBD.php">
+                      <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'] ?? "";?></p>
+                           <form class="form-horizontal style-form" name="form1" method="post" action="">
                            <p style="color:#F00"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']="";?></p>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>

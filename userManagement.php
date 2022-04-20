@@ -5,6 +5,15 @@ include'db.connection.php';
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
   } 
+  // for deleting user 
+if(isset($_GET['id'])) 
+{ 
+$adminid=$_GET['id']; 
+$msg=mysqli_query($link,"delete from users where id='$adminid'"); 
+if($msg) 
+{ 
+} 
+} 
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
