@@ -45,8 +45,12 @@ session_start();
     <?php echo $fetchData; ?>
     <?php
     }?>
-   </div>        
-
+   </div> <?php       
+   if(isset($_GET["term_err"]) && $_GET["term_err"]==1){
+                echo '<div class="alert alert-warning" role="alert" style="width:25%;margin:auto;">';
+                echo 'This term already exists.';
+                echo '</div>';
+            }?>
         <dialog class="Termsmodal" id="Termsmodal">
             <div class=Termsmodal-header>
                 <h1>Insert a term</h1>

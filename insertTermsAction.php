@@ -25,7 +25,7 @@
             mysqli_stmt_store_result($stmt);
 
             if (mysqli_stmt_num_rows($stmt) == 1) {
-                header("location: index.php?term_err=1");
+                header("location: terms.php?term_err=1");
             } else {
                 // Prepare an insert statement
                 $sql = "INSERT INTO termos (`title`, `description`, `owner`) VALUES (?,?,?)";

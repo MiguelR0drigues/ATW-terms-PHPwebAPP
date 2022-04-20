@@ -4,16 +4,45 @@ include'db.connection.php';
 require "functions.php";
 //Checking session is valid or not
 isAccountReady();
+// Processing form data when form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome=$_POST['nome'];
+    $email=$_POST['email'];
+    $tipo=$_POST['tipo'];
+    $palavrapasse=$_POST['palavrapasse'];
+    $estado=$_POST['estado'];
+    $validado=$_POST['validado'];
+    $_SESSION['msg']="Profile added successfully";
+    // Prepare an insert statement
+    $sql = "INSERT INTO users (nome, email, palavrapasse,tipo,estado,validado) VALUES (?,?,?,?,?,?)";
 
-$nome=$_REQUEST['nome'];
-$email=$_REQUEST['email'];
-$tipo=$_REQUEST['tipo'];
-$palavrapasse=$_REQUEST['palavrapasse'];
-$estado=$_REQUEST['estado'];
-$validado=$_REQUEST['validado'];
-$query=mysqli_query($link,"INSERT INTO users Values('$nome' ,'$email' ,'$palavrapasse','$tipo','$estado', '$validado'");
-$_SESSION['msg']="Profile added successfully";
+    if ($stmt = mysqli_prepare($link, $sql)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, 'sssiii', $param_name, $param_email, $param_password, $param_tipo, $param_estado, $param_validado);
 
+        // Set parameters
+        $param_email = $email;
+        $param_password = $palavrapasse; // Creates a password hash
+        $param_name = $nome;
+        $param_estado = $estado;
+        $param_tipo = $tipo;
+        $param_validado = $validado;
+
+        // Attempt to execute the prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+            header("location: userManagement.php");
+        } else {
+            echo "QUERY:::::Oops! Something went wrong. Please try again later.";
+        }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+
+
+    // Close connection
+    mysqli_close($link);
+}
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +115,7 @@ $_SESSION['msg']="Profile added successfully";
                   <div class="col-md-12">
                       <div class="content-panel">
                       <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'] ?? "";?></p>
-                           <form class="form-horizontal style-form" name="form1" method="post" action="">
+                           <form class="form-horizontal style-form" name="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                            <p style="color:#F00"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']="";?></p>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>

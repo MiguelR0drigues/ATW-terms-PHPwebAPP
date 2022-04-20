@@ -83,13 +83,6 @@ isAccountReady();
                     </div>
                </div>
           </section>
-          <?php
-            if(isset($_GET["term_err"]) && $_GET["term_err"]==1){
-                echo '<div class="alert alert-warning" role="alert">';
-                echo 'This term already exists.';
-                echo '</div>';
-            }
-            ?>
      </div>
      </main>
          <!-- SCRIPTS -->
