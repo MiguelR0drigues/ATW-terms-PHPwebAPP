@@ -4,6 +4,8 @@ include'db.connection.php';
 require "functions.php";
 //Checking session is valid or not
 isAccountReady();
+
+$password_err="";
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome=$_POST['nome'];
@@ -15,6 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['msg']="Profile added successfully";
     // Prepare an insert statement
     $sql = "INSERT INTO users (nome, email, palavrapasse,tipo,estado,validado) VALUES (?,?,?,?,?,?)";
+    
+         // Validate password
+         if (empty(trim($_POST["palavrapasse"]))) {
+            $password_err = "Please enter a password.";
+                } elseif (strlen(trim($_POST["palavrapasse"])) < 6) {
+            $password_err = "Password must have atleast 6 characters.";
+                } else {
+            $palavrapasse = trim($_POST["palavrapasse"]);
+        }
+    
 
     if ($stmt = mysqli_prepare($link, $sql)) {
         // Bind variables to the prepared statement as parameters
@@ -22,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Set parameters
         $param_email = $email;
-        $param_password = $palavrapasse; // Creates a password hash
+        $param_password = password_hash($palavrapasse, PASSWORD_DEFAULT);; // Creates a password hash
         $param_name = $nome;
         $param_estado = $estado;
         $param_tipo = $tipo;
@@ -108,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       <div class="content-panel">
                       <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'] ?? "";?></p>
                            <form class="form-horizontal style-form" name="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                           <p style="color:#F00"><?php echo $_SESSION['msg'];?><?php echo $_SESSION['msg']="";?></p>
+                           <p style="color:#F00"><?php echo $_SESSION['msg'];?></p>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>
                               <div class="col-sm-10">
@@ -126,7 +138,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Palavra-Passe</label>
                               <div class="col-sm-10">
                                   <input type="text" class="form-control" name="palavrapasse"  >
-                              </div>
+                                  <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                                </div>
                           </div>
                               <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Tipo </label>
