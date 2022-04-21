@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <title>Admin | Update Profile</title>
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet">
   </head>
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <h5 class="centered"> Admin </h5>
                   <li class="mt">
                       <a href="reset-password.php">
-                          <i class="fa fa-file"></i>
+                          <i class="fa fa-users"></i>
                           <span>Change Password</span>
                       </a>
                   </li>
@@ -97,14 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       </a>
                    
                   </li>
-                  <li class="sub-menu">
-                      <a href="addUser.php" >
-                          <i class="fa fa-users"></i>
-                          <span>Adicionar</span>
-                      </a>
-                </li>
-              
-                 
               </ul>
           </div>
       </aside>

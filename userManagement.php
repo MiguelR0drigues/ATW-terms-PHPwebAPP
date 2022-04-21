@@ -54,7 +54,7 @@ if($msg)
               	  	
                   <li class="mt">
                       <a href="reset-password.php">
-                          <i class="fa fa-file"></i>
+                          <i class="fa fa-users"></i>
                           <span>Reset Password</span>
                       </a>
                   </li>
@@ -63,10 +63,15 @@ if($msg)
                   <li class="sub-menu">
                       <a href="addUser.php" >
                           <i class="fa fa-users"></i>
-                          <span>Adicionar</span>
+                          <span>Adicionar User</span>
                       </a>
                 </li>
-                 
+                <li class="sub-menu">
+                      <a href="index.php" >
+                          <i class="fa fa-users"></i>
+                          <span>Voltar Pagina Inicial</span>
+                      </a>
+                </li>
               </ul>
           </div>
       </aside>

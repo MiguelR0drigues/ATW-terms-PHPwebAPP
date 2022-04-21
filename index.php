@@ -1,8 +1,6 @@
 <?php
-// Initialize the session
-session_start();
-
 require 'functions.php';
+include 'navBar.php';
 isAccountReady();
 
 ?>
@@ -35,40 +33,6 @@ isAccountReady();
                <span class="spinner-rotate"></span>
           </div>
      </section>
-
-
-     <!-- MENU -->
-     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-          <div class="container">
-
-               <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
-
-                    <!-- lOGO TEXT HERE -->
-                    <a href="index.php" class="navbar-brand">Terms & co.</a>
-               </div>
-
-               <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-nav-first">
-                         <li class="active"><a href="index.php">Home</a></li>
-                         <li><a href="terms.php">Termos</a></li>
-                         <?php if(isAdmin($_SESSION["type"])){
-                            echo '<li><a href="userManagement.php">Admin</a></li>';
-                            }
-                          ?>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                    <li><a href="reset-password.php">Reset Password</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                    </ul>
-                </div>
-          </div>
-     </section>
      <main>
           <section>
                <div class="container">
@@ -86,7 +50,7 @@ isAccountReady();
      </div>
      </main>
          <!-- SCRIPTS -->
-         <script src="js/jquery.js"></script>
+     <script src="js/jquery.js"></script>
      <script src="js/bootstrap.min.js"></script>
      <script src="js/owl.carousel.min.js"></script>
      <script src="js/smoothscroll.js"></script>

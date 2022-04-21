@@ -10,7 +10,9 @@ session_start();
 </head>
 <body>
 <button class="open-button btn btn-dark">open modal</button>
-
+<a href="index.php">
+    <button class="open-button btn btn-dark">Go Back</button>
+</a>
 <div class="container">
  <div class="row">
    <div class="col-sm-8">
