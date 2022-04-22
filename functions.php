@@ -221,3 +221,28 @@ function areTermsRelated($father,$son,$link){
         return false;
     }
 }
+
+function isTermRevised($id,$link){
+    // Prepare a select statement
+    $sql = "SELECT revisto FROM termos WHERE id =?";
+
+    if ($stmt = mysqli_prepare($link, $sql)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "i", $id);
+
+        // Attempt to execute the prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+            /* store result */
+            mysqli_stmt_store_result($stmt);
+            mysqli_stmt_bind_result($stmt, $revised);
+            if ($revised == 1){
+                return true;
+            }else{
+                return false;
+            }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+        }
+    }
+}
