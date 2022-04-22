@@ -1,6 +1,6 @@
 <?php
 session_start();
-include'db.connection.php';
+include 'db.connection.php';
 require "functions.php";
 //Checking session is valid or not
 isAccountReady();
@@ -120,7 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       <div class="content-panel">
                       <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'] ?? "";?></p>
                            <form class="form-horizontal style-form" name="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                           <p style="color:#F00"><?php echo $_SESSION['msg'];?></p>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>
                               <div class="col-sm-10">
