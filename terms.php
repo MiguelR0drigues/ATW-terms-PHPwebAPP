@@ -9,26 +9,25 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<button class="open-button btn btn-dark">open modal</button>
-<a href="index.php">
     <button class="open-button btn btn-dark">Go Back</button>
 </a>
+<button class="open-button btn btn-dark">Insert Term</button>
+
 <div class="container">
  <div class="row">
    <div class="col-sm-8">
     <?php echo $deleteMsg??''; ?>
   <?php
       if(is_array($fetchData)){      
-      $sn=1;
       foreach($fetchData as $data){
     ?>
     <div class="card" style="width: 30rem;">
         <div class="card-header"  style="display: flex; justify-content: space-between;">
-            <p><?php echo $data['title']??''; ?> <!--LOREM IPSUM--></p>
+            <a href="term.php?id=<?php echo $data["id"] ?>"><?php echo $data['title']??''; ?></a>
             <p style="text-align: end;"><?php echo (ownerNameByID($data['owner'],$link))??'Unknown'; ?></p>
         </div> 
         <div class="card-body">
-            <p class="card-text"><?php echo $data['description']??''; ?><!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma--></p>
+            <p class="card-text"><?php echo $data['description']??''; ?></p>
         <div style="display: flex; justify-content: space-between; margin-top:3rem">
             <h6 class="" style="text-align: end; font-size:small;color:grey;"><?php echo $data['pubDate']??''; ?></h6>
             <?php
@@ -42,8 +41,7 @@ session_start();
         </div>
         </div>
     </div> <br>
-     <?php
-      $sn++;}}else{ ?>
+     <?php }}else{ ?>
     <?php echo $fetchData; ?>
     <?php
     }?>
