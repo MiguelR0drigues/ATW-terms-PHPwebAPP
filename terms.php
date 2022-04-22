@@ -9,7 +9,8 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <button class="open-button btn btn-dark">Go Back</button>
+<a href="index.php" style="text-decoration:none">
+    <button class="btn btn-dark">Go Back</button>
 </a>
 <button class="open-button btn btn-dark">Insert Term</button>
 

@@ -107,6 +107,9 @@ $fathers=getFathersArray($link);
 </head>
 
 <body>
+<a href="index.php" style="text-decoration:none">
+    <button class="btn btn-dark">Go Back</button>
+</a>
     <div class="position-absolute top-0 start-50 translate-middle-x card" style="width: 30rem; margin-top: 5%">
         <div class="card-header" style="display: flex; justify-content: space-between;">
             <p><?php echo $result['title'] ?? ''; ?></p>
