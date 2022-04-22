@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 function isLoggedin()
 {
     // Check if the user is logged in, if not then redirect him to login page
@@ -163,5 +159,65 @@ function isOwner($ownerID , $termID,$link){
         // Close statement
         mysqli_stmt_close($stmt);
         }
+    }
+}
+
+function areTermsRelated($father,$son,$link){
+    function isRelationDuplicate($father,$son,$link){
+        // Prepare a select statement
+        $sql = "SELECT * FROM relacao WHERE `pai` = ? AND `filho`=?";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ii", $param_father, $param_son);
+
+            // Set parameters
+            $param_father=$father;
+            $param_son=$son;
+
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+
+                if (mysqli_stmt_num_rows($stmt) == 1) {
+                    return true;
+                }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+            }
+        }
+    }
+    function isFather($father,$son,$link){
+        // Prepare a select statement
+        $sql = "SELECT * FROM relacao WHERE `pai` = ? AND `filho`=?";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ii", $param_father, $param_son);
+
+            // Set parameters
+            $param_father=$son;
+            $param_son=$father;
+
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+
+                if (mysqli_stmt_num_rows($stmt) == 1) {
+                    return true;
+                }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+            }
+        }
+    }
+    if(isFather($father,$son,$link) || isRelationDuplicate($father,$son,$link)){
+        return true;
+    }else{
+        return false;
     }
 }
