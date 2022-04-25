@@ -32,5 +32,10 @@ if(empty(trim($_POST["description"]))){
         mysqli_stmt_close($stmt);
         }echo mysqli_error ($link);
     }
+    $name=ownerNameByID($_SESSION["id"],$link);
+    $date=date("Y-m-d H:i:s");
+    $logFile = fopen("log_updates.txt", "a") or die("Unable to open file!");
+    $txt="<".$name. " @ " . $date."> Updated the term with the id ".$_POST['id']." -- Change: Description -> ". $_POST["description"];;
+    fwrite($logFile,$txt.PHP_EOL);
 // Close connection
 mysqli_close($link);

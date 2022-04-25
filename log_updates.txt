@@ -1,0 +1,6 @@
+<ADMIN @ 2022-04-25 23:18:32> Updated the term with the id 48 -- Change: REVISED -> NOT REVISED
+<ADMIN @ 2022-04-25 23:18:32> Updated the term with the id 49 -- Change: REVISED -> NOT REVISED
+<ADMIN @ 2022-04-25 23:18:34> Updated the term with the id 54 -- Change: NOT REVISED -> REVISED
+<ADMIN @ 2022-04-25 23:18:35> Updated the term with the id 55 -- Change: NOT REVISED -> REVISED
+<ADMIN @ 2022-04-25 23:21:36> Updated the term with the id  -- Change: Description -> Inteligencia artificial
+<ADMIN @ 2022-04-25 23:22:41> Updated the term with the id 55 -- Change: Description -> AI
