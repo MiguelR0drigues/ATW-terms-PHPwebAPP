@@ -235,12 +235,13 @@ function isTermRevised($id,$link){
             /* store result */
             mysqli_stmt_store_result($stmt);
             mysqli_stmt_bind_result($stmt, $revised);
-            if ($revised == 1){
-                return true;
-            }else{
-                return false;
+            if (mysqli_stmt_fetch($stmt)){
+                if ($revised == 1){
+                    return true;
+                }else{
+                    return false;
+                }
             }
-
         // Close statement
         mysqli_stmt_close($stmt);
         }

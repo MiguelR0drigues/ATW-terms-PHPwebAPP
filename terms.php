@@ -21,8 +21,8 @@ session_start();
   <?php
       if(is_array($fetchData)){      
       foreach($fetchData as $data){
-    ?>
-    <div class="card" style="width: 30rem;">
+          if((isTermRevised($data["id"],$link))){?>
+          <div class="card" style="width: 30rem;">
         <div class="card-header"  style="display: flex; justify-content: space-between;">
             <a href="term.php?id=<?php echo $data["id"] ?>"><?php echo $data['title']??''; ?></a>
             <p style="text-align: end;"><?php echo (ownerNameByID($data['owner'],$link))??'Unknown'; ?></p>
@@ -42,6 +42,10 @@ session_start();
         </div>
         </div>
     </div> <br>
+        <?php
+          } 
+    ?>
+    
      <?php }}else{ ?>
     <?php echo $fetchData; ?>
     <?php
