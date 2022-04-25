@@ -1,6 +1,6 @@
 <?php
 session_start();
-include'db.connection.php';
+include 'db.connection.php';
 // checking session is valid for not 
 if (strlen($_SESSION['id']==0)) {
   header('location:logout.php');
@@ -66,6 +66,12 @@ if($msg)
                           <span>Adicionar User</span>
                       </a>
                 </li>
+                <li class="sub-menu">
+                      <a href="termsManagement.php" >
+                          <i class="fa fa-users"></i>
+                          <span>Gerir Termos</span>
+                      </a>
+                  </li>
                 <li class="sub-menu">
                       <a href="index.php" >
                           <i class="fa fa-users"></i>
