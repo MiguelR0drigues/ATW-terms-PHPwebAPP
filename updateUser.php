@@ -93,7 +93,7 @@ $_SESSION['msg']="Profile Updated successfully";
 				<div class="row">
                   <div class="col-md-12">
                       <div class="content-panel">
-                      <p align="center" style="color:#F00;"><?php echo $_SESSION['msg'] ?? ""?></p>
+                      <p align="center" style="color:#F00;"><?php echo $_SESSION['msg']?></p>
                            <form class="form-horizontal style-form" name="form1" method="post" action="" onSubmit="return valid();">
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>
@@ -112,23 +112,26 @@ $_SESSION['msg']="Profile Updated successfully";
                               <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Tipo </label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="tipo" value="<?php echo $row['tipo'];?>" >
+                                  <input type="number" class="form-control" name="tipo" value="<?php echo $row['tipo'];?>"min="1" max="2" >
                               </div>
                           </div>
                                <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">estado</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="estado" value="<?php echo $row['estado'];?>" >
+                                  <input type="number" class="form-control" name="estado" value="<?php echo $row['estado'];?> "min="0" max="1" >
                               </div>
                           </div>
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">validado</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="validado" value="<?php echo $row['validado'];?>" >
+                                  <input type="number" class="form-control" name="validado" value="<?php echo $row['validado'];?>"min="0" max="1" >
                               </div>
                           </div>
                           <div style="margin-left:100px;">
-                          <input type="submit" name="Submit" value="Update" class="btn btn-theme"></div>
+                          <a href="userManagement.php">
+                          <input type="submit" name="Submit" value="Update" class="btn btn-theme">
+                          </a>
+                          </div>
                           </form>
                       </div>
                   </div>
