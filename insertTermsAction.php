@@ -28,7 +28,7 @@
                 header("location: terms.php?term_err=1");
             } else {
                 // Prepare an insert statement
-                $sql = "INSERT INTO termos (`title`, `description`, `owner`) VALUES (?,?,?)";
+                $sql = "INSERT INTO termos (`title`, `description`, `owner`,`revisto`) VALUES (?,?,?,0)";
 
                 if ($stmt = mysqli_prepare($link, $sql)) {
                     // Bind variables to the prepared statement as parameters
