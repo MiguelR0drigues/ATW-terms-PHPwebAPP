@@ -93,7 +93,7 @@ $_SESSION['msg']="Profile Updated successfully";
 				<div class="row">
                   <div class="col-md-12">
                       <div class="content-panel">
-                      <p align="center" style="color:#F00;"><?php echo $_SESSION['msg']?></p>
+                      <p align="center" style="color:#F00;"></p>
                            <form class="form-horizontal style-form" name="form1" method="post" action="" onSubmit="return valid();">
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label" style="padding-left:40px;">Nome </label>
