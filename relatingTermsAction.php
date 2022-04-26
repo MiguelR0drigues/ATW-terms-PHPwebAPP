@@ -32,7 +32,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
 
-        header("location: terms.php");
+        header("location: termsManagement.php");
     } else {
         echo "QUERY:::::Oops! Something went wrong. Please try again later.";
     }

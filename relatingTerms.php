@@ -37,6 +37,9 @@ mysqli_stmt_close($stmt);
 
 </head>
 <body>
+<a href="termsManagement.php" style="text-decoration:none">
+    <button class="btn btn-dark">Go Back</button>
+</a>
     <?php
         if(isset($_GET["error"]) && $_GET["error"] == 1){
             echo '<div class="alert alert-danger" role="alert" style="width: 40%; margin:auto;margin-top:1%">';

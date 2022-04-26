@@ -166,11 +166,12 @@ $fathers=getFathersArray($link);
                     </tr>
                     <?php
                     foreach ($fathers as $father) { ?>
+                    <?php if(isTermRevised($father->father,$link)){?>
                         <tr>
                             <td><a href="term.php?id=<?php echo $father->father ?>"><?php echo $father->title ?></a></td>
                             <td><?php echo $father->desc ?></td>
                         </tr>
-                <?php
+                <?php }
                     }
                 }
                 ?>
